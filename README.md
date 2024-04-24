@@ -110,4 +110,5 @@ In the project directory, you can run with command:
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 - Assignment 1 will show at first page when running project or bypass url path '/' (http://localhost:3000)
+    click button "Next" on the bottom of page will send you to Assignment 2
 - Assignment 2 running in path '/mornitoring' (http://localhost:3000/mornitoring)
