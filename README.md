@@ -100,3 +100,14 @@ API from <https://dummyjson.com/users>
     }, 
     ...
 ```
+
+## Running Project 
+In the project directory, you can run with command:
+- yarn 
+### `yarn dev`
+- npm 
+### `npm run dev`
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+- Assignment 1 will show at first page when running project or bypass url path '/' (http://localhost:3000)
+- Assignment 2 running in path '/mornitoring' (http://localhost:3000/mornitoring)
