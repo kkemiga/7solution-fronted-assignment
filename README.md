@@ -66,6 +66,12 @@ See example in the link below
 Please do your best to show your best solution
 we are looking for
 1. Answer the need of question
+> Answer
+>    1. Your current package in detail, basic salary, Bonus, Provident Fund, etc... (45k฿)
+>    2. Your expected salary in Thai baht. (55k฿)
+>    3. Your notice period. (No Notice Required)
+>    4. Please rate your English skills from 1 to 10 (6 point)
+>    5. Your updated resume (sharing with folder of source code file name 3003_resume_kemiga.pdf)
 2. Clean code easy to read
 
 Bonus: if you have multiple solutions we could discuss those theories in our interview (no need to submit multiple versions, just send us the best one you think.)
