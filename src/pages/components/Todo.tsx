@@ -57,13 +57,13 @@ const data: TodoListType[] = [
 
 const Todo = () => {
   const [onSelected, setOnSeleted] = useState<TodoListType[]>([]);
-
+  const onTimeout = useRef<any>({})
   const selected = useRef<TodoListType[]>([]);
   const listItem = useRef<TodoListType[]>(data);
 
   const removeDelay = useCallback(
     (item: TodoListType) => {
-      setTimeout(() => {
+      onTimeout.current[item.name] =  setTimeout(async() => {
         if (!listItem.current.includes(item)) {
           setOnSeleted(
             onSelected?.filter(
@@ -92,6 +92,7 @@ const Todo = () => {
 
   const onHandleTable = (item: TodoListType) => { //onClick Table
     if (!listItem.current?.includes(item)) {
+      clearTimeout(item.name);
       setOnSeleted(
         onSelected?.filter(
           (todoItem: TodoListType) => item.name !== todoItem.name
