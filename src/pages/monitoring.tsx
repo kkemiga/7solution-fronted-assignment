@@ -28,8 +28,15 @@ interface DepartmentDetail {
   male: number;
   female: number;
   ageRange: string;
-  hair: object;
+  hair: DepartmentHair;
   addressUser: object;
+}
+
+interface DepartmentHair {
+  Black: number;
+  Blond: number;
+  Chestnut: number;
+  Brown: number;
 }
 
 export interface userModel {
@@ -119,6 +126,33 @@ export default function Monitoring() {
   const router = useRouter();
   const [jsonData, setJsonData] = useState({});
 
+  const checkHair = (objHair: DepartmentHair, user: userModel) => {
+    switch (user.hair.color) {
+      case "Black":
+        objHair.Black = (objHair.Black || 0) + 1;
+        break;
+      case "Blond":
+        objHair.Blond = (objHair.Blond || 0) + 1;
+        break;
+      case "Chestnut":
+        objHair.Chestnut = (objHair.Chestnut || 0) + 1;
+        break;
+      case "Brown":
+        objHair.Brown = (objHair.Brown || 0) + 1;
+        break;
+      default:
+        "";
+    }
+    return objHair;
+  };
+
+  const checkGender = (obj: any, user: userModel) => {
+    if (user.gender === "male") {
+      obj.male = (obj.male || 0) + 1;
+    } else obj.female = (obj.female || 0) + 1;
+    return obj;
+  };
+
   const fetchData = async () => {
     try {
       const { data } = await axios.get(`https://dummyjson.com/users`);
@@ -128,30 +162,12 @@ export default function Monitoring() {
 
         let departmentJson = Object.keys(departments).reduce(
           (objDep: any, department: any) => {
-            const hair = { Black: 0, Blond: 0, Chestnut: 0, Brown: 0 };
+            let hair = { Black: 0, Blond: 0, Chestnut: 0, Brown: 0 };
             let addressUser: any = {};
             const detail = departments?.[department]?.reduce(
               (obj: any, user: userModel, index: number) => {
-                if (user.gender === "male") {
-                  obj.male = (obj.male || 0) + 1;
-                } else obj.female = (obj.female || 0) + 1;
-
-                switch (user.hair.color) {
-                  case "Black":
-                    hair.Black = (hair.Black || 0) + 1;
-                    break;
-                  case "Blond":
-                    hair.Blond = (hair.Blond || 0) + 1;
-                    break;
-                  case "Chestnut":
-                    hair.Chestnut = (hair.Chestnut || 0) + 1;
-                    break;
-                  case "Brown":
-                    hair.Brown = (hair.Brown || 0) + 1;
-                    break;
-                  default:
-                    "";
-                }
+                obj = checkGender(obj, user);
+                hair = checkHair(hair, user);
                 addressUser[`${user.firstName}${user.lastName}`] =
                   user.address.postalCode;
 
