@@ -92,7 +92,7 @@ const Todo = () => {
 
   const onHandleTable = (item: TodoListType) => { //onClick Table
     if (!listItem.current?.includes(item)) {
-      clearTimeout(item.name);
+      clearTimeout(onTimeout.current[item.name]);
       setOnSeleted(
         onSelected?.filter(
           (todoItem: TodoListType) => item.name !== todoItem.name
